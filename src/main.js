@@ -1,0 +1,1 @@
+imafPlayer = require('./imaf-player/')

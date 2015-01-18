@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>IMAF Player Tests</title>
+        <link rel="stylesheet" type="text/css" href="../css/testPage.css">
+        <link rel="stylesheet" type="text/css" href="../css/fork.css">
+        <!--<script type="text/javascript" src="../js/hidpi-canvas.js"></script>-->
+        <script type="text/javascript" src="../js/prong.js"></script>
+        
+        <!--<script src="https://dl.dropboxusercontent.com/u/5613860/imaf/prong-rc.js"></script>-->
+
+        <script type="text/javascript" src="../js/imaf-player.js"></script>
+        <script src="qadi-min.js"></script>
+        <link rel="stylesheet" type="text/css" href="qadi.css"/>
+        <style>
+
+.trackContainer {
+    width:700px;
+}
+
+        </style>
+        <script>
+
+var d3 = prong.d3;
+
+function loaded(error, tracks){
+    tracks = tracks.filter(function(track){return track.type == 'audio'})
+
+    d3.select('#sequence').html('')
+    var x = d3.scale.linear().domain([0, 60]).range([0, 600]);
+
+    //prong.registerTrackType('audio', imafPlayer.groupedAudioTrack);
+
+    var sequence = prong.sequence()
+        .x(x)
+        .tracks(tracks.slice(2,3))
+        .trackHeight(40)
+        .waveformVerticalZoom(3)
+        .audioOut(prong.audioContext().destination);
+
+    var transport = prong.transport().sequence(sequence)
+
+    d3.select('#sequence').call(sequence)
+    d3.select('#transport').call(transport)
+}
+
+function progress(message){
+    d3.select('#sequence').text(message)
+}
+
+
+function init(){
+    imafPlayer.imaf('../audio/logan3.ima', loaded, progress)
+}
+        </script>
+        <style>
+#main {
+    left:300px;
+}
+     </style>
+    </head>
+    <body onload="init()">
+    <iframe src="./"></iframe>
+    <div id="main">
+        <br />
+        <br />
+        <b>Test Checklist</b>
+        <ul id="qadi">
+           <li>After loading and decoding, you see a prong sequence, with 6 tracks</li>
+           <li>The audio starts at 3 seconds in</li>
+           <li>You can scroll and zoom the sequence as in the prong tests</li>
+           <li>Audio playback works</li>
+        </ul>
+        <div id="transport"></div>
+        <div id="sequence"></div>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <title>Swell Tests</title>
+        <link rel="stylesheet" type="text/css" href="../css/testPage.css">
+        <link rel="stylesheet" type="text/css" href="../css/fork.css">
+        <!--<script type="text/javascript" src="../js/hidpi-canvas.js"></script>-->
+        <script type="text/javascript" src="../js/prong.js"></script>
+        
+        <!--<script src="https://dl.dropboxusercontent.com/u/5613860/imaf/prong-rc.js"></script>-->
+
+        <script type="text/javascript" src="../js/imaf-player.js"></script>
+        <script src="qadi-min.js"></script>
+        <link rel="stylesheet" type="text/css" href="qadi.css"/>
+        <style>
+
+.trackContainer {
+    width:700px;
+}
+
+        </style>
+        <script>
+
+d3 = prong.d3
+
+function init(){
+    var a = [1,2,3,4,5],
+        b = [1,3,2,5,2],
+        c = [0,4,2,3,4]
+
+    function makeIntoObject(value, i){
+        return {x : i, y : value}
+    }
+
+    a = a.map(makeIntoObject)
+    b = b.map(makeIntoObject)
+    c = c.map(makeIntoObject)
+
+    data = [a,b,c]
+    stack = d3.layout.stack().offset('silhouette')
+    stack(data)
+
+    var x = d3.scale.linear().domain([0, 4]).range([100, 700])
+    var y = d3.scale.linear().domain([0, 10]).range([300, 100])
+
+    var area = d3.svg.area()
+        .x(function(d) { return x(d.x); })
+        .y0(function(d) { return y(d.y0); })
+        .y1(function(d) { return y(d.y0 + d.y); });
+
+    colours = ['red', 'green', 'blue']
+
+    d3.select('svg')
+        .selectAll('path')
+        .data(data)
+        .enter()
+        .append('path')
+        .attr('d', function(d){ return area(d)})
+        .style('fill', function(d, i){
+            return colours[i]
+        })
+
+
+    // var browser = svg.selectAll(".browser")
+    //   .data(browsers)
+    // .enter().append("g")
+    //   .attr("class", "browser");
+
+
+    // browser.append("path")
+    //   .attr("class", "area")
+    //   .attr("d", function(d) { return area(d.values); })
+    //   .style("fill", function(d) { return color(d.name); });
+
+}
+
+
+        </script>
+        <style>
+#main {
+    left:300px;
+}
+     </style>
+    </head>
+    <body onload="init()">
+    <iframe src="./"></iframe>
+    <div id="main">
+        <br />
+        <br />
+        <b>Test Checklist</b>
+
+        <svg id="stack" width="800" height="400"></svg>
+    </div>
+    </body>
+</html>

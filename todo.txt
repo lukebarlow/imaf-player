@@ -1,0 +1,5 @@
++ get rid of the zoom jiggle (to do with rounding)
++ make it faster
++ do playback
++ do the click to expand thing better
+    * float on top

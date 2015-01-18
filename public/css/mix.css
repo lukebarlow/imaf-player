@@ -1,0 +1,64 @@
+mix {
+    display: block;
+    min-height:120px;
+    margin-right:20px;
+}
+
+mix div.message {
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+
+mix.warning {
+    color: red;
+}
+
+mix .trackContainer{
+    opacity: 0.8;
+    transition: opacity 0.5s;
+}
+
+mix .trackContainer:hover {
+    opacity: 1;
+}
+
+mix .propertyPanel {
+    display:inline-block;
+    height:100%;
+}
+
+mix .trackContainer {
+    display:inline-block;
+    height:100%;
+    vertical-align:top;
+}
+
+/* transport */
+
+.playStopButton {
+    display: inline-block;
+    cursor:pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.playStopButton circle {
+    fill:#fcbe00;
+    stroke:transparent;
+    
+}
+
+.playStopButton polygon {
+    fill: #63a909;
+    stroke:transparent;
+}
+
+.playStopButton rect {
+    fill: #ec0b1a;
+    stroke: transparent;
+}

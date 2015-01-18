@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>IMAF Player Tests</title>
+        
+        <link rel="stylesheet" type="text/css" href="../css/testPage.css">
+        <link rel="stylesheet" type="text/css" href="../css/mix.css">
+
+        <script src="qadi-min.js"></script>
+        <link rel="stylesheet" type="text/css" href="qadi.css"/>
+        <style>
+#main {
+    left:300px;
+}
+
+#propertyPanel {
+    display:inline-block;
+    height:100%;
+    width:95px;
+    background-color: green;
+}
+
+#trackContainer {
+    display:inline-block;
+    height:100%;
+    width:calc(100% - 95px);
+    background-color: blue;
+}
+
+     </style>
+    </head>
+    <body>
+    <iframe src="./"></iframe>
+    <div id="main">
+        <br />
+        <br />
+        <b>Test Checklist</b><br />
+        <br />
+        You can use a 'mix' tag to create a mix on the page. It will be easy
+        to embed this in a body of text on a web page. It has two view modes:
+        a compact one for viewing and playing, and an expanded one for remixing
+        and editing
+        <ul id="qadi">
+            <li>When first viewed, the audio is compact and fits in the body
+            of the text</li>
+            <li>There is a button to click to remix it</li>
+            <li>When you click, it smoothly expands to a 'remix' mode</li>
+        </ul>
+
+        <hr />
+        <h1>My New Mix</h1>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+
+        <mix style="height:70px">
+            <div id="propertyPanel">PROP</div><div id="trackContainer">TRACKS</div>
+        </mix>
+
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+    </div>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>The mix tag</title>
+        <link rel="stylesheet" type="text/css" href="css/mix.css">
+        <script type="text/javascript" src="js/mix-min.js"></script>
+        <style>
+
+body {
+    font-family:helvetica;
+    font-size:11pt;
+    color:black;
+    height:100%;
+    padding:60px;
+    margin:0;
+}
+
+#main {
+    position:absolute;
+}
+
+h2 {
+    display: block;
+    font-size: 1.1em;
+    -webkit-margin-before: 0.43em;
+    -webkit-margin-after: 0.43em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+
+        </style>
+    </head>
+    <body>
+    <div id="main">
+
+        <h1>My New Mix</h1>
+
+        <p>This is an idea for a simple way to embed multitrack audio in a web page in a way which is compact and visually distinctive. It takes
+        a lead from the way soundcloud allows you to embed tracks on your
+        own website. However, in this case, we can remix the audio how
+        we like.</p>
+
+        <mix src="../audio/logan3.ima"></mix>
+
+        <p>To remix the audio, simply click the 'remix' button to 'open up' the
+        track, then click and drag vertically to adjust the volumes of the
+        different tracks. Click on the 'remix' button a second time to 'close'
+        the track. The relative volumes of the different tracks will be
+        represented in the coloured stripes you can see.</p>
+
+        <p>The HTML to embed this on your own website is extremely simple. You
+        first embed the javascript and stylesheet in the head section of your
+        web page</p>
+
+        <pre>
+            &lt;link rel="stylesheet" type="text/css" href="css/mix.css">
+            &lt;script type="text/javascript" src="js/mix-min.js">&lt;/script>
+        </pre>
+
+        <p>And then just place the &lt;mix> tag anywhere in your html. It has
+        a single attribute, src. So, for example
+        </p>
+
+        <pre>
+            &lt;mix src="../audio/logan3.ima">&lt;/mix>
+        </pre>
+
+    </div>
+    </body>
+</html>

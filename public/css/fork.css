@@ -1,0 +1,288 @@
+
+body {
+    font-family:helvetica;
+    font-size:11pt;
+    color:black;
+    height:100%;
+    padding:0;
+    margin:0;
+}
+
+#main {
+    padding:50px;
+    padding-left:50px;
+    height:100%
+    padding-bottom:0px;
+}
+
+a { color : steelblue;}
+
+.trackName {
+    position:absolute;
+    left:-110px;
+    width:100px;
+    text-align:right;
+    font-size:10pt;
+    margin-top:8px;
+}
+
+.trackProperties {
+  position:absolute;
+}
+
+.trackOverview {
+    display:inline-block;
+    font-size:10pt;
+    margin-top:8px;
+}
+
+.splitDetector {
+    position:absolute;
+}
+
+.splitDetector > div {
+    position:absolute;
+    top:-5px;
+    left:-40px;
+    width:175px;
+    height:10px;
+    background-color:rgba(0,0,0,0);
+    cursor:row-resize;
+}
+
+.splitDetector > div:hover {
+    top:-11px;
+    height:15px;
+}
+
+.startOfGroup .splitDetector > div {
+    top:-10px;
+}
+
+.trackToggle {
+    padding-left:40px;
+    cursor:-webkit-grab;
+    cursor:-moz-grab;
+}
+
+.trackToggle > div {
+    padding:4px;
+    padding-left:8px;
+}
+
+.trackToggle.startOfGroup, .startOfGroup > div, .previewStartOfGroup {
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+}
+
+.trackToggle.endOfGroup, .endOfGroup > div {
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+}
+
+.trackToggle.endOfGroup {
+    margin-bottom:10px;
+}
+
+.previewEndOfGroup {
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+}
+
+.sequence {
+    white-space:nowrap;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+
+.sequence .propertyPanel {
+    float:left;
+}
+
+
+/* waveform */
+
+.area {
+  fill:orange;
+}
+
+.line {
+  stroke:orange;
+  fill:none;
+}
+
+/* timeline */
+
+.timeline path,
+.timeline line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+.timeline text {
+  fill:black;
+  shape-rendering: crispEdges;
+}
+
+.musicalTimeline line.minor,
+.musicalTimeline path {
+    stroke: #ddd;
+    shape-rendering: crispEdges;
+}
+
+/* play line */
+
+.playLine {
+    background-color:green;
+    width:1px;
+    height:600px;
+    top:0px;
+    position:absolute;
+}
+
+.note {
+    cursor:pointer;
+}
+
+/*.selected path, .marqueeSelected path {
+  fill:black;
+  fill-opacity:0.95;
+  stroke-width:2;
+}*/
+
+.ghost {
+  opacity: 0.5;
+}
+
+#sequences {
+    margin:10px;
+}
+
+.marquee {
+  stroke:blue;
+  stroke-dasharray:5,5;
+  fill:blue;
+  fill-opacity:0.1;
+}
+
+.trackOverview {
+
+}
+
+.trackOverview .trackName {
+  position:relative;
+  top:-5px;
+  left:0px;
+  width:60px;
+  display:inline-block;
+  text-align:left;
+  color:white;
+}
+
+/*.mute {
+  background: url('../images/mute.png');
+}*/
+
+.visible {
+  background: url('../images/visible.png');
+}
+
+.audible {
+  background: url('../images/audible.png');
+}
+
+.lock {
+  background: url('../images/lock.png');
+}
+
+.button {
+  background-size: 15px 15px;
+  background-position:5px 4px;
+  background-repeat:no-repeat;
+  display:inline-block;
+  width:20px;
+  height:20px;
+  opacity:0.3;
+}
+
+.button:hover {
+  opacity:0.6;
+}
+
+.button.on {
+  opacity:1;
+}
+
+.dragging {
+  z-index:100;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+  left:-1px;
+}
+
+
+
+/* transport */
+
+.playStopButton {
+    display: inline-block;
+    cursor:pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.playStopButton circle {
+    fill:#fcbe00;
+    stroke:transparent;
+    
+}
+
+.playStopButton polygon {
+    fill: #63a909;
+    stroke:transparent;
+}
+
+.playStopButton rect {
+    fill: #ec0b1a;
+    stroke: transparent;
+}
+
+/* keyboard */
+
+.keyboardNoteLabel {
+    cursor:pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.backdropBlack {
+    fill: black;
+    fill-opacity:0.04;
+}
+
+svg.swellTrack {
+  position:relative;
+  left:-50px;
+}
+
+ 
+.backdropLine {
+  stroke:black;
+  stroke-opacity:0.1;
+  stroke-width:1px;
+}

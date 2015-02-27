@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+    <head>
+        
+        <script src="https://dl.dropboxusercontent.com/u/5613860/imaf/prong-rc.js"></script>
+        <script src="js/imaf-player.js"></script>
+       
+        <style>
+BODY {
+    font-family:helvetica;
+    background-color:#333;
+    color:white;
+    height:100%;
+    padding:0;
+    margin:0;
+    position: fixed!important;
+}
+
+IFRAME {
+    padding:0;
+    margin:0;
+    border-width:0px;
+    width:300px;
+    height:100%;
+    float:left;
+}
+
+#main {
+    padding:50px;
+    padding-left:100px;
+    height:100%
+}
+
+.trackName {
+    position:absolute;
+    left:-110px;
+    width:100px;
+    text-align:right;
+    font-size:10pt;
+    padding-top:9px;
+}
+
+.trackLoading {
+    position:absolute;
+    left:10px;
+    width:100px;
+    font-size:10pt;
+    margin-top:8px;
+}
+
+.track {
+    height:40px;
+    text-align:center;
+}
+
+A { color : steelblue;}
+
+/* waveform */
+
+.area {
+  fill:steelblue;
+}
+
+.over .area {
+    fill:orange;
+}
+
+.line {
+  stroke:steelblue;
+  fill:none;
+}
+
+/* timeline */
+
+.timeline path,
+.timeline line {
+  fill: none;
+  stroke: white;
+  shape-rendering: crispEdges;
+}
+
+.timeline text {
+  fill:white;
+  shape-rendering: crispEdges;
+}
+
+/* comper */
+
+.comp {
+    fill:white;
+    opacity:0.2;
+}
+
+.inbetween {
+  fill:transparent;
+  cursor:hand;
+}
+
+.resizer {
+    fill:red;
+    opacity:0;
+    cursor:ew-resize;
+}
+
+/* play line */
+
+.playLine {
+    background-color:green;
+    width:1px;
+    height:600px;
+    top:0px;
+    position:absolute;
+}
+
+#sequence {
+    height:390px;
+    width:800px;
+    background-color:black;
+    border:1pt solid gray;
+    border-top-width:0px;
+}
+
+#mixer {
+    height:300px;
+}
+
+.pot, .slider {
+    stroke : black;
+    stroke-width : 1px;
+    fill : white;
+    fill-opacity : 1;
+    cursor:pointer;
+}
+
+.slider rect {
+  fill : black;
+}
+
+.pot text, .slider text {
+  fill:black;
+}
+
+.pot path {
+    fill:black;
+}
+
+path.pan {
+    fill:steelblue;
+}
+
+.over path.pan {
+    fill:orange;
+}
+
+.slider .background {
+  fill:steelblue;
+  stroke-width:0;
+}
+
+.over .slider .background {
+  fill:orange;    
+}
+
+text {
+    fill:white;
+    font-size:10pt;
+}
+
+.audioRegion rect {
+  stroke:steelblue;
+  fill:transparent;
+}
+
+.lyrics {
+    text-align:center;
+    font-size:16pt;
+}
+
+        </style>
+
+
+    </head>
+    <body>
+        <div id="main">
+
+        IM AF<br />
+        <br />
+        <div style="width:80%">
+        Demonstration of loading and playing a multi-track MPEG IM AF file in the browser, using the <a href="http://forkaudio.org/prong">prong</a> library. Based on the <a href="http://code.soundsoftware.ac.uk/projects/mpegdevelopments/wiki/MPEG-A">work by Panos Kudumakis et al</a>.
+        <br />
+        <br />
+        </div>
+        <button id="play">play</button>
+        <button id="stop">stop</button>
+        <br />
+        <br />
+        <div id="sequence"></div>
+        <div id="mixer"></div>
+        </div>
+        <script>
+
+trackNames = [
+    'lyrics',
+    'acc. guitar',
+    'bass',
+    'drums',
+    'dist. guitar',
+    'organ',
+    'vocals'
+]
+
+// chords are not currently in the IMAF file, so we just add them manually
+chords = {
+    name : 'chords',
+    type : 'lyrics',
+    data : [
+        {
+            time : 3.19,
+            text : 'Abm7'
+        },
+        {
+            time : 6.97,
+            text : 'Abm7/B'
+        },
+        {
+            time : 10.1,
+            text : 'Ebm'
+        },
+        {
+            time : 35.16,
+            text : 'Abm7'
+        },
+        {
+            time : 41.3,
+            text : 'Ebm'
+        },
+        {
+            time : 59.8,
+            text : 'Abm7'
+        },
+        {
+            time : 65.8,
+            text : 'B'
+        },
+        {
+            time : 69,
+            text : 'Ebm'
+        },
+        {
+            time : 70.52,
+            text : 'Ab'
+        },
+        {
+            time : 71.8,
+            text : 'Ebm'
+        },
+        {
+            time : 73.4,
+            text : 'Ab'
+        },
+        {
+            time : 75.1,
+            text : 'B'
+        },
+        {
+            time : 76.7,
+            text : 'B/C#'
+        },
+        {
+            time : 78,
+            text : 'F#'
+        },
+        {
+            time : 84.4,
+            text : 'B'
+        },
+        {
+            time : 90.6,
+            text : 'F#'
+        },
+        {
+            time : 96.6,
+            text : 'B'
+        },
+        {
+            time : 103,
+            text : 'Abm'
+        },
+        {
+            time : 109.4,
+            text : 'B'
+        },
+        {
+            time : 114,
+            text : 'Ebm'
+        },
+        {
+            time : 132.4,
+            text : 'Abm7'
+        },
+        {
+            time : 138.7,
+            text : 'B'
+        },
+        {
+            time : 141.7,
+            text : 'Eb'
+        },
+        {
+            time : 143.3,
+            text : 'Ab'
+        },
+        {
+            time : 144.8,
+            text : 'Eb'
+        },
+        {
+            time : 146.4,
+            text : 'Ab'
+        },
+        {
+            time : 148.0,
+            text : 'B'
+        },
+        {
+            time : 149.4,
+            text : 'B/C#'
+        },
+        {
+            time : 150.8,
+            text : 'F#'
+        },
+        {
+            time : 156.95,
+            text : 'B'
+        },
+        {
+            time : 163.4,
+            text : 'F#'
+        },
+        {
+            time : 166.2,
+            text : 'F#/D#'
+        },
+        {
+            time : 168.1,
+            text : 'F#/C#'
+        },
+        {
+            time : 169.8,
+            text : 'B'
+        },
+        {
+            time : 176.1,
+            text : 'Abm'
+        },
+        {
+            time : 182.2,
+            text : 'B'
+        },
+        {
+            time : 186.8,
+            text : 'Ebm'
+        },
+
+    ]
+}
+
+path = 'audio/logan3.ima';
+
+imafPlayer.imaf(path, function(error, tracks){
+
+    // hack in the track names, because they're not set in the file
+    tracks.forEach(function(track,i){
+        track.name = trackNames[i]
+    })
+
+    // hack in the chords, which are also currently absent from the imaf
+    tracks.splice(1,0, chords)
+
+    d3.select('#sequence').text('')
+
+    var x = d3.scale.linear().domain([0, 300]).range([0, 800]);
+
+    sequence = prong.sequence()
+        .x(x)
+        .tracks(tracks)
+        .trackHeight(40)
+        .waveformVerticalZoom(3)
+        .audioOut(prong.audioContext().destination);
+
+    d3.select('#sequence').call(sequence);
+    d3.select('#play').on('click', function(){sequence.play()});
+    d3.select('#stop').on('click', function(){
+        if (sequence.playing()){
+            sequence.stop()
+        }else{
+            // if already stopped, then clicking this button resets to zero
+            sequence.currentTime(0);
+        }
+    });
+
+    // the two extra lines about the mixer
+    var mixer = prong.mixer().sequence(sequence);
+    d3.select('#mixer').text('').call(mixer);
+
+    },
+    // the onprogress callback
+    function(progressMessage){
+        d3.select('#sequence').text(progressMessage)
+    }
+)
+
+        </script>
+    </body>
+</html>

@@ -29,6 +29,8 @@ module.exports = function(url, callback, onprogress){
                         prong.audioContext().decodeAudioData(arrayBuffer, function(buffer){
                             track._buffer = buffer;
                             track._channel = buffer.getChannelData(0);
+                            track.buffer = track._buffer;
+                            track.channel = track._channel;
                             _cb();
                         })
                     }

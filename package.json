@@ -7,7 +7,9 @@
     "url": "git://github.com/lukebarlow/imaf-player"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "production-server": "export NODE_ENV=production && node server.js",
+    "prod": "npm run production-server"
   },
   "dependencies": {
     "express": "3.x",

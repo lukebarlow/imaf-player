@@ -1,7 +1,7 @@
-commonProperties = require('prong/commonProperties')
-fx = require('prong/analysis/fx')
-uid = require('prong/uid')
-d3 = require('prong/d3-prong-min')
+commonProperties = require('prong/lib/prong/commonProperties')
+fx = require('prong/lib/prong/analysis/fx')
+uid = require('prong/lib/prong/uid')
+d3 = require('prong/lib/prong/d3-prong-min')
 stack = require('./stack')
 WaveformOverlay = require('./waveformOverlay')
 

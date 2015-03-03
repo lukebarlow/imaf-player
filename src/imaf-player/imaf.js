@@ -8,7 +8,7 @@ with the audio buffers already decoded
 
 var async = require('async');
 var prong = require('prong');
-var d3 = require('prong/d3-prong-min');
+var d3 = require('prong/lib/prong/d3-prong-min');
 
 module.exports = function(url, callback, onprogress){
     Parser.newFile(url, function(){

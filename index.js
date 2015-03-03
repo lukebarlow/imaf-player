@@ -8,7 +8,7 @@ browserify.settings('transform', coffeeify)
 
 app.get('/js/imaf-player.js', browserify('./src/main.js'))
 app.get('/js/mix.js', browserify('./src/mix-main.coffee'))
-app.get('/js/prong.js', browserify('../prong/lib/main.js'))
+app.get('/js/prong.js', browserify('node_modules/prong/lib/main.js'))
 app.use(express.static(__dirname + '/public'));
 
 module.exports = app;

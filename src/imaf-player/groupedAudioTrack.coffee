@@ -1,10 +1,10 @@
-commonProperties = require('prong/commonProperties')
-sound = require('prong/sound').sound
+commonProperties = require('prong/lib/prong/commonProperties')
+sound = require('prong/lib/prong/sound').sound
 GroupedWaveform = require('./groupedWaveform')
-d3 = require('prong/d3-prong-min')
+d3 = require('prong/lib/prong/d3-prong-min')
 async = require('async')
-Uid = require('prong/uid')
-AudioContext = require('prong/audioContext')
+Uid = require('prong/lib/prong/uid')
+AudioContext = require('prong/lib/prong/audioContext')
 
 #Lines = require('../components/lines')
 #Note = require('../components/note')

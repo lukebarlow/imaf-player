@@ -1,6 +1,6 @@
-commonProperties = require('prong/commonProperties')
-Transport = require('prong/components/transport')
-d3 = require('prong/d3-prong-min')
+commonProperties = require('prong/lib/prong/commonProperties')
+Transport = require('prong/lib/prong/components/transport')
+d3 = require('prong/lib/prong/d3-prong-min')
 
 module.exports = ->
 

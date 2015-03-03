@@ -1,24 +1,22 @@
 {
-  "name": "Ear",
-  "description": "Collection of audio analysis functions",
+  "name": "IMAF-player",
+  "description": "Web player for multitrack *.imaf files",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lukebarlow/imaf-player"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
-    "fft" : "latest",
-    "d3": "latest",
     "express": "3.x",
-    "socket.io": "latest",
-    "browserify-middleware" : "latest",
-    "coffeeify" : "latest",
-    "caching-coffeeify" : "latest",
-    "async" : "latest"
+    "prong" : "git://github.com/lukebarlow/prong",
+    "browserify-middleware": "latest",
+    "caching-coffeeify": "latest",
+    "async": "latest"
   },
   "devDependencies": {
-     "jasmine-node": "latest",
-     "gulp": "^3.8.10",
-     "gulp-clean": "^0.3.1",
-    "gulp-coffee": "^2.2.0",
-    "gulp-exec": "^2.1.1",
-    "gulp-notify": "^2.0.1",
-    "gulp-util": "^3.0.1"
+
   }
 }

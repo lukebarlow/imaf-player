@@ -6,7 +6,7 @@
  Always centers the data, corresponding to the 'silhouette' option in d3
 ###
 
-d3 = require('prong/d3-prong-min')
+d3 = require('prong/lib/prong/d3-prong-min')
 
 module.exports = (data) ->
     length = data[0].length

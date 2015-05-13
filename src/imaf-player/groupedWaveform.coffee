@@ -1,5 +1,5 @@
 commonProperties = require('prong/lib/prong/commonProperties')
-fx = require('prong/lib/prong/analysis/fx')
+downsample = require('prong/lib/prong/analysis/downsample')
 uid = require('prong/lib/prong/uid')
 d3 = require('prong/lib/prong/d3-prong-min')
 stack = require('./stack')
@@ -45,7 +45,7 @@ module.exports = ->
                         track._cache = {}
                         track._stackCache = {}
                         for zoom in zoomLevels
-                            track._cache[zoom] = fx.thinOut(track._channel, zoom)
+                            track._cache[zoom] = downsample(track._channel, zoom).map(Math.abs)
 
                     calculateStacks()
                     

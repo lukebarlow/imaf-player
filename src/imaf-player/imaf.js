@@ -61,7 +61,7 @@ module.exports = function(url, callback, onprogress){
                 }
 
                 tracks.unshift({
-                    type : 'lyrics',
+                    type : 'text',
                     data : lyricsData
                 })
 

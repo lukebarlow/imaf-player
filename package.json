@@ -14,6 +14,7 @@
   "dependencies": {
     "express": "3.x",
     "prong" : "git://github.com/lukebarlow/prong",
+    "browserify": "latest",
     "browserify-middleware": "latest",
     "caching-coffeeify": "latest",
     "async": "latest"

@@ -10,13 +10,20 @@
   fill:none;
 }
 
+
+.area.loop {
+    fill: #63a909;
+}
+
 .over .area {
     fill: orange;
 }
 
-.over .line {
-    stroke: orange;
+.over .area.loop {
+    fill: #63a909;
+    fill-opacity: 0.8;
 }
+
 
 /* timeline */
 
@@ -124,6 +131,38 @@
     top:0px;
     position:absolute;
 }
+
+/* looping */
+
+.timeline .loopSelector {
+    cursor: col-resize;
+    fill: transparent;
+}
+
+.timeline .loopSelector:hover {
+    fill: rgba(0,0,0,0.05);
+}
+
+.timeline .loop {
+    fill: #63a909;
+    cursor: ew-resize;
+}
+
+.timeline .loop.disabled {
+    fill-opacity:0.15;
+    cursor: col-resize;
+}
+
+.timeline .loopStart {
+    cursor: w-resize;
+    fill: transparent;
+}
+
+.timeline .loopEnd {
+    cursor: e-resize;
+    fill: transparent;
+}
+
 
 /* audio regions */
 
@@ -233,10 +272,9 @@ text {
     font-size:10pt;
 }
 
-.lyrics {
+.textTrack {
     text-align: center;
-    position:relative;
-    left:-120px;
     vertical-align: center;
+    display:inline-block;
 }
 

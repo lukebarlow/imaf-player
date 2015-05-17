@@ -1,4 +1,4 @@
-d3 = require('d3-prong')
+d3 = require('prong').d3
 
 module.exports = (el) ->
     if 'node' or el then el = el.node()

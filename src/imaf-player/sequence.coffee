@@ -1,7 +1,7 @@
 commonProperties = require('prong/lib/prong/commonProperties')
 Track = require('prong/lib/prong/track/track')
 Timeline = require('prong/lib/prong/components/timeline')
-d3 = require('d3-prong')
+d3 = require('prong').d3
 audioContext = require('prong/lib/prong/audioContext')
 PropertyPanel = require('./propertyPanel')
 elementPosition = require('./elementPosition')

@@ -1,4 +1,4 @@
-d3 = require('d3-prong')
+d3 = require('prong').d3
 
 loader = require('./imaf-player/loader')
 Sequence = require('./imaf-player/sequence')

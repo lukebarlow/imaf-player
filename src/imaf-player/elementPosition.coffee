@@ -1,4 +1,4 @@
-d3 = require('prong/lib/prong/d3-prong-min')
+d3 = require('d3-prong')
 
 module.exports = (el) ->
     if 'node' or el then el = el.node()

@@ -1,7 +1,7 @@
 # a rect on top of waveforms, which handles dragging up and down
 # to change the volume on them
 
-d3 = require('prong/lib/prong/d3-prong-min')
+d3 = require('d3-prong')
 
 module.exports = ->
     
